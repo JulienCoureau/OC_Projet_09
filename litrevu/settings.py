@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -88,16 +89,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 8,
+        }
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        'NAME': 'authentication.validators.ContainsLetterValidator',
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        'NAME': 'authentication.validators.ContainsNumberValidator',
     },
 ]
 
@@ -105,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "fr-fr"
 
 TIME_ZONE = "UTC"
 
@@ -126,3 +127,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = 'authentication.User'
 LOGIN_REDIRECT_URL = 'feed'
 LOGOUT_REDIRECT_URL = 'login'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

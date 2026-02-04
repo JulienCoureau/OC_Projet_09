@@ -15,7 +15,7 @@ class Ticket(models.Model):
 class Review(models.Model):
     ticket = models.ForeignKey(to=Ticket, on_delete=models.CASCADE)
     rating = models.PositiveSmallIntegerField(
-        # valide que la note est entre 0 et 5
+        
         validators=[MinValueValidator(0), MaxValueValidator(5)]
     )
     headline = models.CharField(max_length=128)
@@ -41,7 +41,6 @@ class UserFollows(models.Model):
     )
 
     class Meta:
-        # assure qu'on ne peut pas suivre plusieurs fois la même personne
         unique_together = ('user', 'followed_user', )
         verbose_name_plural = "User follows" 
     

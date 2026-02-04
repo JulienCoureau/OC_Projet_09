@@ -16,24 +16,20 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LogoutView 
 from django.urls import path
-import authentication.views  # <--- On importe les vues de votre app authentication
+import authentication.views
 import reviews.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     
-    # Page de connexion (Accueil)
-    path('', LoginView.as_view(
-        template_name='authentication/login.html',
-        redirect_authenticated_user=True
-    ), name='login'),
+    path('', authentication.views.LoginPageView.as_view(), name='login'),
     
     # Page de déconnexion
     path('logout/', LogoutView.as_view(), name='logout'),
 
-    # Page d'Inscription (C'est la ligne qui manquait !)
+    # Page d'Inscription
     path('signup/', authentication.views.signup_page, name='signup'),
 
     # Page du Flux

@@ -5,23 +5,31 @@
     <title>LITReview - Connexion</title>
     <style>
         body { font-family: sans-serif; text-align: center; margin-top: 50px; }
-        .container { width: 300px; margin: 0 auto; border: 1px solid #ccc; padding: 20px; }
-        button { background-color: #007bff; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+        .container { width: 300px; margin: 0 auto; border: 1px solid #ccc; padding: 20px; border-radius: 8px; }
+        button { background-color: #007bff; color: white; padding: 10px 20px; border: none; cursor: pointer; margin-top: 10px; }
+        input { margin-bottom: 10px; padding: 5px; width: 90%; }
+        .error { color: red; font-size: 0.9em; margin-bottom: 10px; }
     </style>
 </head>
 <body>
     <h1>LITReview</h1>
+    
     <div class="container">
         <h2>Connectez-vous</h2>
+
+        {% if message %}
+            <p class="error">{{ message }}</p>
+        {% endif %}
         
         <form method="post">
             {% csrf_token %}
+            
             {{ form.as_p }}
             
             <button type="submit">Se connecter</button>
         </form>
 
-        <p>Pas encore de compte ? <a href="#">Inscrivez-vous maintenant</a></p>
+        <p>Pas encore de compte ? <a href="{% url 'signup' %}">Inscrivez-vous maintenant</a></p>
     </div>
 </body>
 </html>
