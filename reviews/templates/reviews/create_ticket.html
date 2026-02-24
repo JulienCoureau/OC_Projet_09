@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        font-family: sans-serif;
+    }
+    .page-title {
+        text-align: center;
+        font-weight: normal;
+        font-size: 22px;
+        margin-bottom: 40px;
+    }
+    .form-group {
+        margin-bottom: 30px;
+    }
+    .form-group label {
+        display: block;
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    /* Cibler spécifiquement les champs générés par Django */
+    .form-group input[type="text"],
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #000;
+        box-sizing: border-box; /* Empêche le champ de dépasser de l'écran */
+        font-family: inherit;
+        font-size: 14px;
+    }
+    .form-group textarea {
+        height: 200px; /* Boîte plus grande pour la description */
+        resize: vertical;
+    }
+    
+    .submit-container {
+        text-align: right;
+        margin-top: 40px;
+    }
+    .btn-submit {
+        padding: 10px 40px;
+        border: 1px solid #000;
+        background-color: #fff;
+        color: #000;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    .btn-submit:hover {
+        background-color: #f5f5f5;
+    }
+    .error-msg {
+        color: red;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="form-container">
+    <h2 class="page-title">Créer un ticket</h2>
+
+    {% if form.errors %}
+        <div class="error-msg">
+            Veuillez corriger les erreurs ci-dessous.
+        </div>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="{{ form.title.id_for_label }}">Titre</label>
+            {{ form.title }}
+            {{ form.title.errors }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.description.id_for_label }}">Description</label>
+            {{ form.description }}
+            {{ form.description.errors }}
+        </div>
+
+        <div class="form-group">
+            <label for="{{ form.image.id_for_label }}">Image</label>
+            {{ form.image }}
+            {{ form.image.errors }}
+        </div>
+
+        <div class="submit-container">
+            <button type="submit" class="btn-submit">Envoyer</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

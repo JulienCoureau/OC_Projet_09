@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>LITReview</title>
+    <style>
+        /* Styles globaux (Wireframe) */
+        body { 
+            font-family: sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            background-color: #fff;
+        }
+        .container { 
+            max-width: 900px; 
+            margin: 0 auto; 
+        }
+        
+        /* Style strict du header (Ligne noire, titre centré, menu à droite) */
+        header {
+            position: relative;
+            padding: 20px 0;
+            border-bottom: 1px solid #000;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: normal;
+        }
+        .top-nav {
+            position: absolute;
+            right: 0;
+        }
+        .top-nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #000;
+            font-size: 14px;
+        }
+        .top-nav a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>LITReview</h1>
+            
+            {% if user.is_authenticated %}
+            <nav class="top-nav">
+                <a href="{% url 'feed' %}">Flux</a>
+                <a href="{% url 'my_posts' %}">Posts</a> 
+                <a href="{% url 'follow_users' %}">Abonnements</a>
+                <a href="{% url 'logout' %}">Se déconnecter</a>
+            </nav>
+            {% else %}
+            <nav class="top-nav">
+                <a href="{% url 'login' %}">Se connecter</a>
+            </nav>
+            {% endif %}
+        </header>
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>

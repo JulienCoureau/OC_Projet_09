@@ -16,22 +16,33 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.contrib.auth.views import LogoutView 
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.auth.views import LogoutView
 import authentication.views
 import reviews.views
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
     path('', authentication.views.LoginPageView.as_view(), name='login'),
-    
-    # Page de déconnexion
     path('logout/', LogoutView.as_view(), name='logout'),
-
-    # Page d'Inscription
     path('signup/', authentication.views.signup_page, name='signup'),
-
-    # Page du Flux
     path('feed/', reviews.views.feed, name='feed'),
+    path('my-posts/', reviews.views.my_posts, name='my_posts'),
+    path('ticket/create/', reviews.views.create_ticket, name='create_ticket'),
+    path('ticket/<int:ticket_id>/create-review/', reviews.views.create_review, name='create_review'),
+    path('review/create/', reviews.views.create_review_standalone, name='create_review_standalone'),
+    path('follow-users/', reviews.views.follow_users, name='follow_users'),
+    path('unfollow/<int:user_id>/', reviews.views.unfollow_user, name='unfollow_user'),
+    path('feed/', reviews.views.feed, name='feed'),
+    path('ticket/<int:ticket_id>/edit/', reviews.views.edit_ticket, name='edit_ticket'),
+    path('ticket/<int:ticket_id>/delete/', reviews.views.delete_ticket, name='delete_ticket'),
+    path('review/<int:review_id>/edit/', reviews.views.edit_review, name='edit_review'),
+    path('review/<int:review_id>/delete/', reviews.views.delete_review, name='delete_review'),
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

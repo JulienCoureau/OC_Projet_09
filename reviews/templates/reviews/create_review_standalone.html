@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        font-family: sans-serif;
+    }
+    .page-title {
+        text-align: center;
+        font-weight: normal;
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+    
+    .main-box {
+        border: 1px solid #000;
+        padding: 30px;
+        background-color: #fff;
+    }
+    
+    .section-label {
+        font-size: 16px;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group > label {
+        display: block;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .form-group input[type="text"],
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #000;
+        box-sizing: border-box;
+        font-family: inherit;
+        font-size: 14px;
+    }
+    .form-group textarea {
+        height: 150px;
+        resize: vertical;
+    }
+    
+    /* ========================================= */
+    /* NOUVEAU STYLE POUR L'ALIGNEMENT HORIZONTAL */
+    /* ========================================= */
+    .radio-container {
+        display: flex;
+        gap: 30px; /* Espace entre les boutons 0, 1, 2... */
+        align-items: center;
+    }
+    .radio-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 16px;
+    }
+    .radio-item input {
+        margin: 0; /* Enlève la marge par défaut des petits cercles */
+    }
+    
+    .divider {
+        border: none;
+        border-top: 1px solid #000;
+        margin: 30px -30px;
+    }
+
+    .submit-container {
+        text-align: right;
+        margin-top: 30px;
+    }
+    .btn-wireframe {
+        padding: 10px 40px;
+        border: 1px solid #000;
+        background-color: #fff;
+        color: #000;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    .btn-wireframe:hover {
+        background-color: #f5f5f5;
+    }
+</style>
+
+<div class="form-container">
+    <h2 class="page-title">Créer une critique</h2>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="main-box">
+            
+            <p class="section-label">Livre / Article</p>
+            
+            <div class="form-group">
+                <label for="{{ ticket_form.title.id_for_label }}">Titre</label>
+                {{ ticket_form.title }}
+                <div style="color: red;">{{ ticket_form.title.errors }}</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ ticket_form.description.id_for_label }}">Description</label>
+                {{ ticket_form.description }}
+                <div style="color: red;">{{ ticket_form.description.errors }}</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ ticket_form.image.id_for_label }}">Image</label>
+                {{ ticket_form.image }}
+                <div style="color: red;">{{ ticket_form.image.errors }}</div>
+            </div>
+
+            <hr class="divider">
+
+            <p class="section-label">Critique</p>
+            
+            <div class="form-group">
+                <label for="{{ review_form.headline.id_for_label }}">Titre</label>
+                {{ review_form.headline }}
+                <div style="color: red;">{{ review_form.headline.errors }}</div>
+            </div>
+            
+            <div class="form-group">
+                <label>Note</label>
+                <div class="radio-container">
+                    {% for radio in review_form.rating %}
+                        <label class="radio-item" for="{{ radio.id_for_label }}">
+                            {{ radio.tag }} - {{ radio.choice_label }}
+                        </label>
+                    {% endfor %}
+                </div>
+                <div style="color: red;">{{ review_form.rating.errors }}</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ review_form.body.id_for_label }}">Commentaire</label>
+                {{ review_form.body }}
+                <div style="color: red;">{{ review_form.body.errors }}</div>
+            </div>
+
+            <div class="submit-container">
+                <button type="submit" class="btn-wireframe">Envoyer</button>
+            </div>
+            
+        </div>
+        
+    </form>
+</div>
+{% endblock %}

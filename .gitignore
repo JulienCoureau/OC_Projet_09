@@ -1,4 +1,10 @@
+ENV/
 env/
+venv/
+.venv/
+/opt/anaconda3/
+media/
 __pycache__/
-*.pyc
-.DS_Store
+*.py[cod]
+*$py.class
+.env
