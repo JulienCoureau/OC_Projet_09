@@ -19,7 +19,6 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib.auth.views import LogoutView
 import authentication.views
 import reviews.views
 
@@ -27,7 +26,7 @@ import reviews.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', authentication.views.LoginPageView.as_view(), name='login'),
-    path('logout/', LogoutView.as_view(), name='logout'),
+    path('logout/', authentication.views.logout_user, name='logout'),
     path('signup/', authentication.views.signup_page, name='signup'),
     path('feed/', reviews.views.feed, name='feed'),
     path('my-posts/', reviews.views.my_posts, name='my_posts'),
