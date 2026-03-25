@@ -192,3 +192,4 @@ def delete_review(request, review_id):
         review.delete()
         return redirect('my_posts')
     return render(request, 'reviews/delete_confirm.html')
+ 
