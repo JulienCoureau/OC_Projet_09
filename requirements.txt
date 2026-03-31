@@ -252,7 +252,7 @@ ply @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/ply_169923
 prometheus-client @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/prometheus_client_1699242791845/work
 prompt-toolkit @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_c63v4kqjzr/croot/prompt-toolkit_1704404354115/work
 Protego @ file:///tmp/build/80754af9/protego_1598657180827/work
-protobuf==4.25.3
+protobuf==5.29.6
 psutil @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/psutil_1699248249804/work
 ptyprocess @ file:///tmp/build/80754af9/ptyprocess_1609355006118/work/dist/ptyprocess-0.7.0-py2.py3-none-any.whl
 pure-eval @ file:///opt/conda/conda-bld/pure_eval_1646925070566/work
@@ -338,7 +338,7 @@ semver @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_99u
 Send2Trash @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/send2trash_1701803532643/work
 sentry-sdk @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_4dcc1avjs2/croot/sentry-sdk_1732198183579/work
 service-identity @ file:///Users/ktietz/demo/mc3/conda-bld/service_identity_1629460757137/work
-setuptools==75.1.0
+setuptools==78.1.1
 shellingham @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/shellingham_1699238695807/work
 sip @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/sip_1699238710791/work
 six @ file:///tmp/build/80754af9/six_1644875935023/work
@@ -392,8 +392,8 @@ ujson @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_dexx
 unicodedata2 @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_a3epjto7gs/croot/unicodedata2_1713212955584/work
 Unidecode @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_33gnubyv29/croot/unidecode_1724790055767/work
 urljoin==1.0.0
-urllib3==2.4.0
-virtualenv==20.30.0
+urllib3==2.6.3
+virtualenv==20.36.1
 w3lib @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/w3lib_1709223508304/work
 watchdog @ file:///Users/builder/cbouss/crwatchdog/watchdog_1717177010913/work
 wcwidth @ file:///Users/ktietz/demo/mc3/conda-bld/wcwidth_1629357192024/work
@@ -402,7 +402,7 @@ websocket-client @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp
 websockets==15.0.1
 Werkzeug @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_5bnbxlhunm/croot/werkzeug_1716533322814/work
 whatthepatch @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/whatthepatch_1699243659982/work
-wheel==0.44.0
+wheel==0.46.2
 widgetsnbextension @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_45ynevdsp5/croot/widgetsnbextension_1710960054121/work
 wrapt @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/wrapt_1699240702378/work
 wurlitzer @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/wurlitzer_1699265832005/work
